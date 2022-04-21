@@ -1,0 +1,40 @@
+
+<div class="space"></div>
+<mat-card style="border: 1px solid black;">
+    <mat-card-title>Register Here</mat-card-title>
+    <form class="example-form" [formGroup]="registerForm" >
+        <mat-form-field class="fname" appearance="outline">
+            <mat-label>Firstname</mat-label>
+            <input matInput placeholder="Ex.jayesh@gmail.com" formControlName="firstname" >
+            <mat-error *ngIf="registerForm.get('firstname')?.invalid">required firstname</mat-error>
+        </mat-form-field>
+        <mat-form-field class="lname" appearance="outline">
+            <mat-label>Lastname</mat-label>
+            <input matInput placeholder="Ex.jayesh@gmail.com" formControlName="lastname" >
+            <mat-error *ngIf="registerForm.get('lastname')?.invalid">required lastname</mat-error>
+        </mat-form-field>
+        <mat-form-field class="email" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Ex.jayesh@gmail.com" formControlName="email" >
+            <mat-error *ngIf="registerForm.get('email')?.invalid">{{getErrorMessageForEmail()}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field  class="example-full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" [type]="hide?'password':'text'" required >
+            <button mat-icon-button matSuffix (click)="hide=!hide" [attr.area.label]="'hide password'" [attr.aira-pressed]="hide">
+                <mat-icon>{{hide? 'visibility_off':'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="registerForm.get('password')?.invalid">Password is required</mat-error>
+            <mat-error *ngIf="password.errors?.['upperCaseLetter']">At least One UpperCase Character required</mat-error> 
+            <mat-error *ngIf="password.errors?.['lowerCaseLetter']">At least One LowerCase Character required</mat-error>
+            <mat-error *ngIf="password.errors?.['numericLetter']">At least One numeric value required</mat-error>
+            <mat-error *ngIf="password.errors?.['specialLetter']">At least One Special Character required</mat-error>
+            <mat-error *ngIf="password.errors?.['minLength']">Minimum 8 size and maximum 10 size required</mat-error>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" (click)="onRegister(registerForm.value)" class="button"  >Sign up</button>
+    </form>
+
+
+</mat-card>
