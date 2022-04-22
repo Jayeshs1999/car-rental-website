@@ -18,6 +18,7 @@
             <input matInput placeholder="Ex.jayesh@gmail.com" formControlName="email" >
             <mat-error *ngIf="registerForm.get('email')?.invalid">{{getErrorMessageForEmail()}}</mat-error>
         </mat-form-field>
+        <p *ngIf="checkError">{{errorString}}</p>
         <br>
         <mat-form-field  class="example-full-width" appearance="outline">
             <mat-label>Password</mat-label>

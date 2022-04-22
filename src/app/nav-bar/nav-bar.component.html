@@ -1,10 +1,16 @@
 
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <h1>Welcome To My Website</h1>
+        <h1>Welcome</h1>
         <span class="spacer"></span>
-        <button mat-button routerLink="/login">Login</button>
-        <button mat-button routerLink="/register">Register</button>
+        <button mat-button *ngIf="userNotLogin" routerLink="/login">Login</button>
+        <button mat-button *ngIf="userNotLogin" routerLink="/register">Register</button>
+        <!-- <button mat-button *ngIf="userLogin" (click)="logOut()">LogOut</button> -->
     </mat-toolbar-row>
 </mat-toolbar>
+
+
+
+
+
 

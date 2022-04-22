@@ -21,3 +21,8 @@ mat-card {
   .button{
       width: 50%;
   }
+
+  p{
+      color: red;
+      font-weight: bold;
+  }

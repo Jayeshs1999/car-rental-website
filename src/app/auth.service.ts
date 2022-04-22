@@ -19,15 +19,16 @@ export class AuthService {
     })
    }
 
-   signUpUser(user:any){
+   signUpUser(user:any): Promise<any> {
      return this.afAuth.createUserWithEmailAndPassword(user.email,user.password).then((result)=>{
        let emailLower=user.email.toLowerCase();
        console.log("Result inside signUpService :",result)
+       console.log(result.user);
        result.user?.sendEmailVerification()
      }).catch((error)=>{
        console.log("auth service : signup error",error)
-      //  if(error.code)
-      //  return{ isValid:false,message:error.message}
+       if(error.code)
+       return {isValid: false,message:error.message}
      })
    }
 
@@ -37,7 +38,8 @@ export class AuthService {
      }).catch(error=>{
        console.log('auth service: login error...');
        console.log('error code', error.code)
-     
+       if(error.code)
+       return {isValid: false,message:error.message}
      })
    }
 }

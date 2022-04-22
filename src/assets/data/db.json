@@ -1,0 +1,45 @@
+{
+    "product": [
+      { "id": 1, 
+        "name": "shirts",
+        "category_id": 5,
+        "descriptions":"description here",
+        "price":200,
+        "is_available":true,
+        "rating":4,
+        "review":150,
+        "vendor_name":"shriSairam shop",
+        "waranty":1 
+      },
+      { "id": 2, 
+        "name": "shirt2",
+        "category_id": 1,
+        "descriptions":"description here",
+        "price":200,
+        "is_available":true,
+        "rating":4,
+        "review":150,
+        "vendor_name":"shriSairam shop",
+        "waranty":1 
+      },
+      { "id": 3, 
+        "name": "shirts3",
+        "category_id": 5,
+        "descriptions":"description here",
+        "price":200,
+        "is_available":true,
+        "rating":4,
+        "review":150,
+        "vendor_name":"Sangitam shop",
+        "waranty":1 
+      }
+      
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 },
+      { "id": 2, "body": "some comment", "postId": 1 }
+    ],
+    "profile": {
+      "name": "typicode"
+    }
+  }

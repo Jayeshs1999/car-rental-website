@@ -12,6 +12,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class RegisterComponent implements OnInit {
 hide=true
+errorString="This email is already in used"
+checkError=false
 firebaseErrorMsg:string
   registerForm:FormGroup
   constructor(private formBuilder:FormBuilder, private authService:AuthService, private router:Router, private afAuth: AngularFireAuth) { 
@@ -50,21 +52,22 @@ firebaseErrorMsg:string
 
   onRegister(value:any){
     if(this.registerForm.invalid)
-      console.log("error")
+      return 
 
     this.authService.signUpUser(this.registerForm.value).then((result:any)=>{
       if(result==null){
-        console.log("Result inside onRegister Button : ",result)
-        // this.router.navigate(['/login'])
+        console.log("result  :",result)
+        alert("Congratulation !! SignUp successfully")
+        this.router.navigate(['/login'])
       }
       else if(result.isValid==false){
         this.firebaseErrorMsg=result.message
-      console.log("errors")
+        console.log("result  :",result)
+      console.log("errors :",this.firebaseErrorMsg)
+      this.checkError=true
       }
     }).catch((error:any)=>{
 console.log("error")
     })
   }
-
- 
 }

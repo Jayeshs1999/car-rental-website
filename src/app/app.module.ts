@@ -16,6 +16,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from "@angular/fire/compat";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { OrdersModule } from './orders/orders.module';
+import { SiteLayoutModule } from './site-layout/site-layout.module';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,8 +36,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatButtonModule,
     MatToolbarModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatIconModule,
     AngularFireModule.initializeApp(environment.firebase),
+    OrdersModule,
+    SiteLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

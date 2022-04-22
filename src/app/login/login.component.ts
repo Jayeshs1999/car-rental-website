@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { checkLowerCaseLetterInPassword, checkMinLengthForPassword, checkNumericInPassword, checkSpecialCharacterInPassword, checkUpperCaseLetterInPassword } from '../event.service';
 
 @Component({
@@ -10,7 +13,8 @@ import { checkLowerCaseLetterInPassword, checkMinLengthForPassword, checkNumeric
 export class LoginComponent implements OnInit {
 hide=true
   loginForm:FormGroup;
-  constructor(private formBuilder: FormBuilder) { }
+  firebaseErrorMessage:string
+  constructor(private formBuilder: FormBuilder, private authService:AuthService,private afAuth:AngularFireAuth,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -28,10 +32,26 @@ hide=true
         ]]
     })
   }
-  onLogin(value:any){
-
+  onLogin(value:any) {
+    if(this.loginForm.invalid)
+    return;
+    this.authService.loginUser(this.loginForm.value.email,this.loginForm.value.password).then((result:any)=>{
+      if(result==null){
+        console.log("Logging in...")
+        alert("Congratulation !! Login Successfully")
+        this.router.navigate(["/dashboard"])
+      }
+      else if(result.isValid==false){
+        console.log('login error',result);
+        this.firebaseErrorMessage=result.message
+        alert("Invalid Email and password :( ")
+        this.loginForm.reset()
+      }
+    })
+    
     console.log(value)
   }
+
   get password() {
     return this.loginForm.controls['password'];
   }
