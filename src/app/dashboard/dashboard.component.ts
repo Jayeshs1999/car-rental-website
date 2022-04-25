@@ -20,11 +20,11 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  logOut(){
-    this.userNotLogin=true
-    this.userLogin=false
-    this.afauth.signOut();
+  // logOut(){
+  //   this.userNotLogin=true
+  //   this.userLogin=false
+  //   this.afauth.signOut();
     
-  }
+  // }
 
 }

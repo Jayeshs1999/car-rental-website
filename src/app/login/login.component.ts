@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { checkLowerCaseLetterInPassword, checkMinLengthForPassword, checkNumericInPassword, checkSpecialCharacterInPassword, checkUpperCaseLetterInPassword } from '../event.service';
+import { ProductsModule } from '../products/products.module';
+import { ViewAllProductComponent } from '../products/view-all-product/view-all-product.component';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,7 @@ export class LoginComponent implements OnInit {
 hide=true
   loginForm:FormGroup;
   firebaseErrorMessage:string
+  isLogIn:boolean
   constructor(private formBuilder: FormBuilder, private authService:AuthService,private afAuth:AngularFireAuth,private router:Router) { }
 
   ngOnInit(): void {
@@ -39,7 +42,9 @@ hide=true
       if(result==null){
         console.log("Logging in...")
         alert("Congratulation !! Login Successfully")
-        this.router.navigate(["/dashboard"])
+        this.isLogIn=true
+        this.router.navigate(["/products/products"])
+
       }
       else if(result.isValid==false){
         console.log('login error',result);

@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { Observable } from 'rxjs';
+import { Category } from '../site-layout/category';
+import {Product} from './product';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,30 +10,35 @@ export class ProductService {
 
   constructor(private httpClient:HttpClient) {
    }
-   createProduct(productBody:any){
+   createProduct(productBody:any) :Observable<Product>{
      const baseUrl="http://localhost:3000/product";
-     return this.httpClient.post(baseUrl,productBody);
+     return this.httpClient.post<Product>(baseUrl,productBody);
   }
 
-  updateProduct(productId:any,productBody:any){
+  updateProduct(productId:any,productBody:any):Observable<Product>{
     const baseUrl="http://localhost:3000/product/"+productId;
-    return this.httpClient.put(baseUrl,productId);
+    return this.httpClient.put<Product>(baseUrl,productId);
  }
- viewProduct(productId:any){
-  const baseUrl="http://localhost:3000/product/"+productId;
-  return this.httpClient.get(baseUrl);
+ viewProduct():Observable<Product>{
+  const baseUrl="http://localhost:3000/product";
+  return this.httpClient.get<Product>(baseUrl);
 }
-deleteProduct(productId:any){
+deleteProduct(productId:any):Observable<Product>{
   const baseUrl="http://localhost:3000/product/"+productId;
-  return this.httpClient.delete(baseUrl);
+  return this.httpClient.delete<Product>(baseUrl);
 }
-searchCategoryProduct(categoryId:any){
-  const baseUrl="http://localhost:3000/product/category="+categoryId;
-  return this.httpClient.get(baseUrl);
+searchCategoryProduct(categoryId:any):Observable<Product>{
+  const baseUrl="http://localhost:3000/product?categoryId="+categoryId;
+  return this.httpClient.get<Product>(baseUrl);
 }
 
-searchDateProduct(dateParams:any){
+searchDateProduct(dateParams:any):Observable<Product>{
   const baseUrl="http://localhost:3000/product/date="+dateParams;
-  return this.httpClient.delete(baseUrl);
+  return this.httpClient.delete<Product>(baseUrl);
+}
+
+getCategory(): Observable<Category>{
+  const categoryUrl="http://localhost:3000/categories";
+  return this.httpClient.get<Category>(categoryUrl)
 }
 }

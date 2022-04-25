@@ -19,6 +19,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrdersModule } from './orders/orders.module';
 import { SiteLayoutModule } from './site-layout/site-layout.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsRoutingModule } from './products/products-routing.module';
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +42,10 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MatIconModule,
     AngularFireModule.initializeApp(environment.firebase),
+    ProductsRoutingModule,
     OrdersModule,
-    SiteLayoutModule
+    SiteLayoutModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

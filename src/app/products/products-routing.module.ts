@@ -10,15 +10,15 @@ import { ViewProductByDateComponent } from './view-product-by-date/view-product-
 import { ViewProductComponent } from './view-product/view-product.component';
 
 const routes: Routes = [
-  { path: '', component: ProductsComponent },
+  { path:'products', component:ViewAllProductComponent},
   { path: 'add-product', component: AddProductComponent },
-  {path:"view-product/:id",component:ViewProductComponent},
-  {path:"list-product",component:ViewAllProductComponent},
-  { path: 'search-category', component: ViewProductByCategoryComponent },
+ 
+  // {path:"list-product",component:ViewAllProductComponent},
+  { path: 'category/:id', component: ViewProductByCategoryComponent },
   { path: 'search-date', component: ViewProductByDateComponent },
   {path:"delete-product",component:DeleteProductComponent},
   {path:"update-product/:id",component:UpdateProductComponent},
-
+  {path:"products/view-product/:id",component:ViewProductComponent},
 ];
 
 @NgModule({
