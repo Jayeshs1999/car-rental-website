@@ -1,2 +1,78 @@
-<p>update-product works!</p>
-<h3>{{productId}}</h3>
+
+
+
+
+<h2 class="bg-light mb-2 text-center">Update Product</h2>
+<form (submit)="updateProduct(updateProductForm)" #updateProductForm="ngForm" class="row g-3 needs-validation">
+  
+   
+    <div class="col-md-6 mb-3">
+        <label for="validationServer01">Product Id</label>
+        <input type="number" class="form-control" value="Enter product Name" name="product_id" [(ngModel)]="productDetails.productId"   required>
+    </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="validationServer01">Product Name</label>
+            <input type="text" class="form-control" value="Enter product Name" name="product_name" [(ngModel)]="productDetails.productName"   required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="validationServer02">Category Id</label>
+            <input type="number" class="form-control" value="Enter product Name"  name="product_category" [(ngModel)]="productDetails.categoryId"  required>
+        </div>
+  
+
+   
+        <div class="col-md-6 mb-3">
+            <label for="validationServer03">Description</label>
+            <textarea type="text" name="product_description" id="" cols="30" rows="2" class="form-control" placeholder="Enter product description" [(ngModel)]="productDetails.description"  required></textarea>
+        </div>
+     
+        <div class="col-md-6 mb-3">
+        <label for="">Rating</label>  
+        <select class="form-select" name="product_rating" ngModel aria-label="Default select example">
+           
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+   
+
+    
+        <div class="col-md-6 mb-3">
+            <label for="validationServer01">Product Color</label>
+            <input type="text" class="form-control" value="Enter product color" name="product_color" [(ngModel)]="productDetails.color" required>
+        </div>
+      
+    <div class="col-md-6 mb-3">
+        <label for="">Is Available</label>  
+        <select class="form-select"   name="product_available" [(ngModel)]="productDetails.isAvailable" aria-label="Default select example">
+           
+            <option value="0">0</option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+   
+        <div class="col-md-6 mb-3">
+            <label for="validationServer01">Product Price</label>
+            <input type="text" class="form-control" value="Enter product Price" name="product_price" [(ngModel)]="productDetails.price"  required>
+        </div>
+      
+
+         <div class="col-md-6 mb-3">
+            <label for="">Reviews</label>  
+            <select class="form-select" name="product_reviews"ngModel aria-label="Default select example">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+   
+    <button class="btn btn-primary" type="submit">Submit form</button>  
+</form>
+<br>
+<br>

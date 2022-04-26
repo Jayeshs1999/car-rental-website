@@ -17,10 +17,14 @@ export class ProductService {
 
   updateProduct(productId:any,productBody:any):Observable<Product>{
     const baseUrl="http://localhost:3000/product/"+productId;
-    return this.httpClient.put<Product>(baseUrl,productId);
+    return this.httpClient.put<Product>(baseUrl,productBody);
  }
- viewProduct():Observable<Product>{
+ viewAllProduct():Observable<Product>{
   const baseUrl="http://localhost:3000/product";
+  return this.httpClient.get<Product>(baseUrl);
+}
+viewProduct(categoryId:any):Observable<Product>{
+  const baseUrl="http://localhost:3000/product/"+categoryId;
   return this.httpClient.get<Product>(baseUrl);
 }
 deleteProduct(productId:any):Observable<Product>{

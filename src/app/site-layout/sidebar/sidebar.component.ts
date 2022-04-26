@@ -22,11 +22,7 @@ export class SidebarComponent implements OnInit {
       
       this.data=data
       console.log("this :",this.data)
-      console.log(this.data[0].id)
+     
     })
-    
-
   }
- 
-
 }

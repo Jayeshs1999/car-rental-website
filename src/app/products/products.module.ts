@@ -10,8 +10,10 @@ import { DeleteProductComponent } from './delete-product/delete-product.componen
 import { ViewAllProductComponent } from './view-all-product/view-all-product.component';
 import { ViewProductByDateComponent } from './view-product-by-date/view-product-by-date.component';
 import { ViewProductByCategoryComponent } from './view-product-by-category/view-product-by-category.component';
-
-
+import { MatCardModule } from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { FormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     ProductsComponent,
@@ -25,7 +27,11 @@ import { ViewProductByCategoryComponent } from './view-product-by-category/view-
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    MatCardModule,
+    MatGridListModule,
+    FormsModule,
+    MatSelectModule
   ]
 })
 export class ProductsModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 
@@ -8,12 +9,12 @@ import { ProductService } from '../product.service';
   styleUrls: ['./view-all-product.component.css']
 })
 export class ViewAllProductComponent implements OnInit {
-
   productList:any;
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductService,private activateRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.productService.viewProduct().subscribe(data=>{
+
+    this.productService.viewAllProduct().subscribe(data=>{
       this.productList=data
       console.log(this.productList[0]['productName'])
     })

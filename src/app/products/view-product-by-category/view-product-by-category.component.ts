@@ -31,6 +31,7 @@ export class ViewProductByCategoryComponent implements OnInit {
         if(this.productList.length==0){
           this.noItemFound=true
         }
+        
       })
     })
   }
