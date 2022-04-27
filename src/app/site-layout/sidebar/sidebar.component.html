@@ -1,3 +1,4 @@
+<div *ngIf="showSideBar">
 <h1 class="my-4">Welcome Shop</h1>
 
 <a routerLink="products/products"  class="list-group-item" style="background-color:khaki;" >View All Products</a>
@@ -6,4 +7,5 @@
 
 <div class="list-group"  *ngFor="let d of data; let index = index">
     <a routerLink="products/category/{{data[index].id}}"  class="list-group-item" >{{data[index]['id']}}  {{data[index]['categoryName']}}</a>
+</div>
 </div>

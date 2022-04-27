@@ -12,7 +12,7 @@ export class AddProductComponent implements OnInit {
   constructor(private productService:ProductService) { }
 
   ngOnInit(): void {
-
+    
   }
 
   addNewProduct(form :any){
@@ -30,6 +30,7 @@ export class AddProductComponent implements OnInit {
       color:form.value.product_color,
     };
     console.log(newProduct);
+    console.log("file nameL", form.value.file)
     this.productService.createProduct(newProduct).subscribe(data=>{
       console.log(data)
     })

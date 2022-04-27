@@ -1,0 +1,78 @@
+<br>
+<br>
+<img  class="center" src="{{productData.productImg}}" height="60px" width="60px" alt="">
+<form class="row g-3 needs-validation"  (submit)="buyNowFormSubmition(formsubmition)" #formsubmition="ngForm" style="padding-top: 50px;" novalidate>    
+        <div>
+        <label for="validationCustom05">Product Name</label>
+        <input type="text" class="form-control" id="validationCustom05" name="productname" [(ngModel)]="productData.productName"  ngModel   readonly >
+    </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom01">First name</label>
+        <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="firstname" ngModel value="" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom02">Last name</label>
+        <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" name="lastname" ngModel  value="" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationServer03">Address</label>
+        <textarea type="text" name="product_description" id="" cols="30" rows="2" name="address" ngModel  class="form-control"
+            placeholder="Ex. Kranti chauk, building No.2, Aurangabad"  required></textarea>
+    </div>
+  
+    
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom03">City</label>
+        <input type="text" class="form-control" id="validationCustom03" name="city" ngModel  placeholder="City" required>
+        <div class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationCustom04">State</label>
+        <input type="text" class="form-control" id="validationCustom04" name="state" ngModel  placeholder="State" required>
+        <div class="invalid-feedback">
+          Please provide a valid state.
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationCustom05">Pin Code</label>
+        <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        type = "number"
+        maxlength = "6" class="form-control" id="validationCustom05" name="pin" ngModel  placeholder="Pin Code" required>
+        <div class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationCustom05">Order type</label>
+        <input type="text" class="form-control" id="validationCustom05" name="ordertype" [(ngModel)]="CashOnDelivery"  value="Cash On Delivery" placeholder="Pin Code" readonly>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom03">Mobile No</label>
+        <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        type = "number"
+        maxlength = "10" class="form-control" id="validationCustom03" name="mobile"  ngModel   placeholder="Mobile number" required>
+      </div>
+    
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" name="check" ngModel  id="invalidCheck" required>
+        <label class="form-check-label" for="invalidCheck">
+          Agree to terms and conditions
+        </label>
+        <div class="invalid-feedback">
+          You must agree before submitting.
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="!formsubmition.valid">Submit form</button>
+  </form>
+
+  <br>
+   

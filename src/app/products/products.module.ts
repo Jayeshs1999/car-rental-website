@@ -12,8 +12,12 @@ import { ViewProductByDateComponent } from './view-product-by-date/view-product-
 import { ViewProductByCategoryComponent } from './view-product-by-category/view-product-by-category.component';
 import { MatCardModule } from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import { BuyNowComponent } from './buy-now/buy-now.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   declarations: [
     ProductsComponent,
@@ -23,7 +27,8 @@ import {MatSelectModule} from '@angular/material/select';
     DeleteProductComponent,
     ViewAllProductComponent,
     ViewProductByDateComponent,
-    ViewProductByCategoryComponent
+    ViewProductByCategoryComponent,
+    BuyNowComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +36,11 @@ import {MatSelectModule} from '@angular/material/select';
     MatCardModule,
     MatGridListModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatButtonModule
   ]
 })
 export class ProductsModule { }

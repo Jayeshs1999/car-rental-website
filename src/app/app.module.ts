@@ -15,12 +15,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from "@angular/fire/compat";
-import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { OrdersModule } from './orders/orders.module';
 import { SiteLayoutModule } from './site-layout/site-layout.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsRoutingModule } from './products/products-routing.module';
 import { RouterModule } from '@angular/router';
+import { ErrorComponent } from './error/error.component';
+import { provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp } from 'firebase/app';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { provideFunctions,getFunctions } from '@angular/fire/functions';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -28,7 +36,8 @@ import { RouterModule } from '@angular/router';
     LoginComponent,
     NavBarComponent,
     RegisterComponent,
-    DashboardComponent
+  
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -42,10 +51,16 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     MatIconModule,
     AngularFireModule.initializeApp(environment.firebase),
+    
     ProductsRoutingModule,
     OrdersModule,
     SiteLayoutModule,
-    RouterModule
+    RouterModule,
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    provideFunctions(() => getFunctions()),
+    provideStorage(() => getStorage()),
+    AngularFireModule
   ],
   providers: [],
   bootstrap: [AppComponent]

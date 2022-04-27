@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   userLoggedIn:boolean
+  fromSignin=false
+
   constructor(private router:Router,private afAuth:AngularFireAuth) {
     this.userLoggedIn=false
     this.afAuth.onAuthStateChanged((user)=>{
@@ -25,11 +27,14 @@ export class AuthService {
        console.log("Result inside signUpService :",result)
        console.log(result.user);
        result.user?.sendEmailVerification()
+       this.fromSignin=true
      }).catch((error)=>{
        console.log("auth service : signup error",error)
        if(error.code)
        return {isValid: false,message:error.message}
      })
+
+     
    }
 
    loginUser(email:string,password:string): Promise<any>{

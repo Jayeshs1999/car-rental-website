@@ -4,14 +4,15 @@
 
 export const environment = {
   production: false,
-  firebase:{
-    apiKey: "AIzaSyCMozLj5t9C3zDpfHT8EDdXxuiEIGm-nnk",
-    authDomain: "car-rental-webside.firebaseapp.com",
-    projectId: "car-rental-webside",
-    storageBucket: "car-rental-webside.appspot.com",
-    messagingSenderId: "589832798086",
-    appId: "1:589832798086:web:35faca6cbb2a0311a47607",
-    measurementId: "G-W0BZMR8QNT"
+  firebase: {
+    projectId: 'car-rental-webside',
+    appId: '1:589832798086:web:35faca6cbb2a0311a47607',
+    storageBucket: 'car-rental-webside.appspot.com',
+    locationId: 'us-central',
+    apiKey: 'AIzaSyCMozLj5t9C3zDpfHT8EDdXxuiEIGm-nnk',
+    authDomain: 'car-rental-webside.firebaseapp.com',
+    messagingSenderId: '589832798086',
+    measurementId: 'G-W0BZMR8QNT',
   }
 };
 

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "car-rental-webside": {
+      "hosting": {
+        "car-rental": [
+          "car-rental-webside"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "car-rental-webside"
+  }
+}
