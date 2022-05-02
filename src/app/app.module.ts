@@ -29,6 +29,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { ViewCartComponent } from './view-cart/view-cart.component';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     NavBarComponent,
     RegisterComponent,
   
-    ErrorComponent
+    ErrorComponent,
+       ViewCartComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     ReactiveFormsModule,
     HttpClientModule,
     MatIconModule,
+    MatListModule,
     AngularFireModule.initializeApp(environment.firebase),
     
     ProductsRoutingModule,

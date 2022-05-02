@@ -9,6 +9,7 @@ export class AuthService {
 
   userLoggedIn:boolean
   fromSignin=false
+ 
 
   constructor(private router:Router,private afAuth:AngularFireAuth) {
     this.userLoggedIn=false

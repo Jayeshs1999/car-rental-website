@@ -1,21 +1,13 @@
 
-<!-- <mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <h1>Welcome</h1>
-        <span class="spacer"></span>
-        <button mat-button *ngIf="userNotLogin" routerLink="/login">Login</button>
-        <button mat-button *ngIf="userNotLogin" routerLink="/register">Register</button>
-        <button mat-button *ngIf="userLogin" (click)="logOut()">LogOut</button>
-    </mat-toolbar-row>
-</mat-toolbar> -->
-
-
  <mat-toolbar color="primary" >  <!-- class="fixed-top" -->
     <mat-toolbar-row>
+        <mat-icon>polymer</mat-icon>&nbsp;&nbsp;
         <h1>Welcome</h1>
         <span class="spacer"></span>
         <button mat-button *ngIf="userNotLogin" routerLink="/login">Login</button>
         <button mat-button *ngIf="userNotLogin" routerLink="/register">Register</button>
-        <button mat-button *ngIf="userLogin" (click)="logOut()">LogOut</button>
+
+        <button mat-button routerLink="/products/view-cart" *ngIf="userLogin" style="margin-right: 20px;" ><mat-icon >add_shopping_cart</mat-icon>{{lenght}}</button> 
+        <button mat-button  *ngIf="userLogin" (click)="logOut()"> LogOut</button>
     </mat-toolbar-row>
 </mat-toolbar>

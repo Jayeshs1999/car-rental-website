@@ -290,6 +290,17 @@
       "rating": "3",
       "reviews": "4",
       "color": "red"
+    },
+    {
+      "id": 655,
+      "productName": "",
+      "categoryId": "",
+      "price": "",
+      "productImg": "",
+      "isAvailable": "",
+      "rating": "",
+      "reviews": "",
+      "color": ""
     }
   ],
   "categories": [
@@ -320,6 +331,47 @@
       "id": 2,
       "body": "some comment",
       "postId": 1
+    }
+  ],
+  "addToCart": [
+    {
+      "id": 14,
+      "productName": "woman-formal-lehnga",
+      "categoryId": 3,
+      "descriptions": "woman-formal-lehnga",
+      "price": 500,
+      "is_available": true,
+      "productImg": "http://localhost:4200/assets/woman-formal-lehnga.jpg",
+      "rating": 4,
+      "review": 150,
+      "vendor_name": "shriSairam shop",
+      "waranty": 1
+    },
+    {
+      "id": 3,
+      "productName": "White Shirts",
+      "categoryId": 2,
+      "descriptions": "description here",
+      "price": 400,
+      "is_available": true,
+      "productImg": "http://localhost:4200/assets/white-shirt.jpg",
+      "rating": 4,
+      "review": 150,
+      "vendor_name": "shriSairam shop",
+      "waranty": 1
+    },
+    {
+      "id": 9,
+      "productName": "Solid Floral Printing Plaid Casual Male Shirts",
+      "categoryId": 2,
+      "descriptions": "Solid-Floral-Printing-Plaid-Casual-Male-Shirts.jpg",
+      "price": 600,
+      "is_available": true,
+      "productImg": "http://localhost:4200/assets/Solid-Floral-Printing-Plaid-Casual-Male-Shirts.jpg",
+      "rating": 4,
+      "review": 150,
+      "vendor_name": "shriSairam shop",
+      "waranty": 1
     }
   ],
   "profile": {

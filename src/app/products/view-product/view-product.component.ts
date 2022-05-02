@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { toArray } from 'rxjs';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
@@ -15,7 +15,7 @@ export class ViewProductComponent implements OnInit {
   data:any
 
   
-  constructor(private activateRoute:ActivatedRoute,private productService:ProductService) { }
+  constructor(private activateRoute:ActivatedRoute,private productService:ProductService,private router:Router) { }
 
   ngOnInit(): void {
     this.activateRoute.params.subscribe(data=>{
@@ -37,7 +37,17 @@ export class ViewProductComponent implements OnInit {
      
     })
   }
+  addToCart(value:any){
+    
+    console.log("Product data :",value)
+    this.productService.createCartItem(value).subscribe(data=>{
+      console.log("data inside the addtocart :",data)
+      alert("Item added to the cart successfully")
+      this.productService.notifyAboutChange()
+      
+    })
 
+  }
 
 
 }

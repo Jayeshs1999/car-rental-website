@@ -16,14 +16,21 @@ export class AddProductComponent implements OnInit {
   }
 
   addNewProduct(form :any){
-    console.log(form.value)
+    // console.log(form.value)
+    // let image_name= form.value.file.toString().split("\'")
+    // image_name=form.value.file.split("\\")
+    // console.log(image_name[2])
+    // let img_url='http://localhost:4200/assets/'
+    // let appendedImgUrl=img_url.concat(image_name[2])
+    // console.log(appendedImgUrl)
+
     let newProduct={
       id: form.value.product_id, 
     productName: form.value.product_name,
       categoryId: form.value.product_category,
       descriptions:form.value.product_discription,
       price:form.value.product_price,
-      productImg:"",
+      productImg:form.value.file,
       isAvailable:form.value.product_available,
       rating:form.value.product_rating,
       reviews:form.value.product_reviews,
@@ -31,9 +38,12 @@ export class AddProductComponent implements OnInit {
     };
     console.log(newProduct);
     console.log("file nameL", form.value.file)
+
+  
     this.productService.createProduct(newProduct).subscribe(data=>{
       console.log(data)
     })
+
 
     form.reset()
   }

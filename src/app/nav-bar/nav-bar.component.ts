@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { ProductService } from '../products/product.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,21 +14,54 @@ export class NavBarComponent implements OnInit {
 
   userNotLogin=true
   userLogin=false
-  
-  constructor(private afAuth:AngularFireAuth,private router:Router,private authService:AuthService) {
-}
+ cartItemLenght:any
+ lenght=0
 
+ notifierSubscription: Subscription = this.productService.eventEmitterNotifier.subscribe(notified => {
+  // originator has notified me. refresh my data here.
+  console.log(notified)
+  this.lenght=this.lenght+1
+  console.log("lenght :",this.lenght)
+});
+
+notifierSubscriptionForDelete: Subscription = this.productService.subjectNotifier.subscribe(notified => {
+  // originator has notified me. refresh my data here.
+  this.lenght=this.lenght-1
+  console.log("lenght :",this.lenght)
+});
+
+  constructor(private afAuth:AngularFireAuth,private router:Router,private authService:AuthService,
+    private productService:ProductService )  {
+}
   ngOnInit(): void {
     
+   
+
     this.afAuth.onAuthStateChanged((user)=>{
       
         if(user){
           this.userNotLogin=false
-          this.userLogin=true
+          this.userLogin=true 
         }
-     
     })
+
+    this.productService.viewAllCartItems().subscribe(data=>{
+      this.cartItemLenght=data
+      for (let value of this.cartItemLenght){
+        this.lenght=this.lenght+1
+        console.log(this.lenght)
+      }
+        console.log("data:",data) 
+    })
+    
+    
   }
+  ngOnDestroy() {
+    this.notifierSubscription.unsubscribe();
+    this.notifierSubscriptionForDelete.unsubscribe();
+  }
+
+  
   logOut(){
     this.userNotLogin=true
     this.userLogin=false
@@ -34,7 +69,4 @@ export class NavBarComponent implements OnInit {
     
     this.router.navigate(['/login'])
   }
-
 }
-
-
