@@ -22,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsRoutingModule } from './products/products-routing.module';
 import { RouterModule } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
-import { provideFirebaseApp } from '@angular/fire/app';
+import { FirebaseApp, provideFirebaseApp } from '@angular/fire/app';
 import { initializeApp } from 'firebase/app';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
@@ -31,6 +31,8 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { ViewCartComponent } from './view-cart/view-cart.component';
 import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import {MatListModule} from '@angular/material/list';
     HttpClientModule,
     MatIconModule,
     MatListModule,
+    MatDialogModule,
+    MatMenuModule,
     AngularFireModule.initializeApp(environment.firebase),
     
     ProductsRoutingModule,
@@ -64,7 +68,8 @@ import {MatListModule} from '@angular/material/list';
     provideFirestore(() => getFirestore()),
     provideFunctions(() => getFunctions()),
     provideStorage(() => getStorage()),
-    AngularFireModule
+    AngularFireModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

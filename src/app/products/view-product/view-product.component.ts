@@ -48,6 +48,11 @@ export class ViewProductComponent implements OnInit {
     })
 
   }
+  refresh(){
+    
+    this.ngOnInit()
+    window.scrollTo(0,0)
+  }
 
 
 }

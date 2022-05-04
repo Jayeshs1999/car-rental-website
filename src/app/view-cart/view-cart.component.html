@@ -3,7 +3,7 @@
 <div *ngFor="let item of allCartItem; let index=index " style="margin: 10px 0px;">
   <mat-card class="example-card" >
     <mat-card-title-group>
-      <mat-card-title> <a routerLink="/products/products/view-product/{{allCartItem[index]['id']}}">{{allCartItem[index]['productName']}}</a></mat-card-title>
+      <mat-card-title > <a style="text-decoration: none;" routerLink="/products/products/view-product/{{allCartItem[index]['id']}}">{{allCartItem[index]['productName']}}</a></mat-card-title>
       <mat-card-subtitle>
           Price : {{allCartItem[index]['price']}}<br>
           Vendor name : {{allCartItem[index]['vendor_name']}}<br>

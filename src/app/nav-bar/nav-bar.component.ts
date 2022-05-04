@@ -16,6 +16,10 @@ export class NavBarComponent implements OnInit {
   userLogin=false
  cartItemLenght:any
  lenght=0
+ email:any
+ firstname:any
+ lastname:any
+
 
  notifierSubscription: Subscription = this.productService.eventEmitterNotifier.subscribe(notified => {
   // originator has notified me. refresh my data here.
@@ -30,20 +34,32 @@ notifierSubscriptionForDelete: Subscription = this.productService.subjectNotifie
   console.log("lenght :",this.lenght)
 });
 
+notifierSubscriptionForLoginAndCartVisibility: Subscription = this.authService.subjectNotifier.subscribe(notified => {
+  // originator has notified me. refresh my data here.
+  // this.userNotLogin=false
+  //  this.userLogin=true 
+ 
+});
+
   constructor(private afAuth:AngularFireAuth,private router:Router,private authService:AuthService,
     private productService:ProductService )  {
 }
-  ngOnInit(): void {
-    
-   
 
-    this.afAuth.onAuthStateChanged((user)=>{
-      
-        if(user){
-          this.userNotLogin=false
-          this.userLogin=true 
-        }
-    })
+  ngOnInit(): void {
+  
+      this.afAuth.onAuthStateChanged((user)=>{
+        this.email=user?.email
+          console.log("user data",user)
+          this.firstname=localStorage.getItem("firstname")
+          this.lastname=localStorage.getItem("lastname")
+          console.log("Firstname :",this.firstname)
+          if(user){
+            this.userNotLogin=false
+            this.userLogin=true 
+          }
+      })
+    
+  
 
     this.productService.viewAllCartItems().subscribe(data=>{
       this.cartItemLenght=data
@@ -66,7 +82,7 @@ notifierSubscriptionForDelete: Subscription = this.productService.subjectNotifie
     this.userNotLogin=true
     this.userLogin=false
     this.afAuth.signOut();
-    
+  
     this.router.navigate(['/login'])
   }
 }

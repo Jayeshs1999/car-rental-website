@@ -42,7 +42,7 @@
                     <div class="card-body p-4">
                         <div class="text-center">
                           
-                            <h3 class="fw-bolder">{{value.productName}}</h3>
+                            <h3 class="fw-bolder" ><button style="border: 0ch; background-color: white; font-weight: bold;" (click)="refresh()"><a routerLink="/products/products/view-product/{{value.id}}" onclick="scroll(0,0)">{{value.productName}} </a></button></h3>
                            
                             {{value.price}}
                         </div>

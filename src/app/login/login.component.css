@@ -4,6 +4,7 @@ mat-card {
     text-align: center;
     max-height: 600px;
     padding-top: 60px;
+    
   }
 
   mat-form-field{
@@ -20,3 +21,4 @@ mat-card {
   .button{
     width: 50%;
 }
+

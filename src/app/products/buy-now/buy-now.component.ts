@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { OrderDataService } from 'src/app/order-data.service';
 import { OrderData } from '../order-data';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
+import { Twilio } from "twilio";
 
 @Component({
   selector: 'app-buy-now',
@@ -48,10 +50,14 @@ export class BuyNowComponent implements OnInit {
 
     formData.reset();
 
+
     alert("Congratulation!! order confirm successfully !!")
     this.router.navigate(['/products/products'])
     
-    
+
+
+
+
 
   }
 
