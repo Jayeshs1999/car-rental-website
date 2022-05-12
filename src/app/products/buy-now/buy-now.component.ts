@@ -6,7 +6,7 @@ import { OrderDataService } from 'src/app/order-data.service';
 import { OrderData } from '../order-data';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
-import { Twilio } from "twilio";
+
 
 @Component({
   selector: 'app-buy-now',
@@ -15,6 +15,7 @@ import { Twilio } from "twilio";
 })
 export class BuyNowComponent implements OnInit {
 
+  invalidFormErrorMsg=false
   productId:Product
   buyNowForm:FormGroup
   productData:Product|any
@@ -25,8 +26,6 @@ export class BuyNowComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-   
 
     this.activatedRoute.params.subscribe(data=>{
       console.log("data",data)
@@ -42,6 +41,17 @@ export class BuyNowComponent implements OnInit {
   }
   buyNowFormSubmition(formData:any ){
    
+    if(!formData.valid){
+        this.invalidFormErrorMsg=true
+
+        setTimeout(() => {
+          this.invalidFormErrorMsg=false
+        }, 3000);
+     
+      console.log("Invalid form")
+   return
+    }
+    console.log("data submited") 
     this.orderService.create(formData.value).then((result:any) => {
       console.log("inside component result :",result)
     }).catch((err:any) => {
@@ -50,15 +60,8 @@ export class BuyNowComponent implements OnInit {
 
     formData.reset();
 
-
     alert("Congratulation!! order confirm successfully !!")
     this.router.navigate(['/products/products'])
-    
-
-
-
-
-
   }
 
 }

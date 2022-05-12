@@ -79,6 +79,11 @@ deleteCartItem(itemId:any):Observable<Product>{
   return this.httpClient.delete<Product>(baseUrl);
 }
 
-
+getAllCartItem(){
+  const baseUrl="http://localhost:3000/addToCart";
+  return this.httpClient.get<Product>(baseUrl);
+}
 
 }
+
+

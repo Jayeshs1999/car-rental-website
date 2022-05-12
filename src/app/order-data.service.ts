@@ -12,10 +12,14 @@ import { OrderData } from './products/order-data';
 export class OrderDataService {
 
   private dbPath="/ordersData";
+  private dbProductPath="/addProduct"
   orderRef:AngularFirestoreCollection<OrderData>;
+  productRef:AngularFirestoreCollection<OrderData>;
+
   constructor(private db:AngularFirestore,) {
    
     this.orderRef=db.collection(this.dbPath)
+    this.productRef=db.collection(this.dbProductPath)
     console.log("inside create service order ref :", this.orderRef)
 
    }
@@ -25,9 +29,13 @@ export class OrderDataService {
      return this.orderRef.add({...orderData})
    }
 
- 
+   addToFirebase(productData:any){
+    console.log("inside create service :", productData)
+    return this.productRef.add({...productData})
+  }
 
-
-
+  getData(){
+    return this.db.collection('addProduct').snapshotChanges()
+    }
   
 }

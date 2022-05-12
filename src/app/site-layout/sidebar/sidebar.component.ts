@@ -16,16 +16,20 @@ export class SidebarComponent implements OnInit {
   data:any;
   showSideBar=false
 
-  // notifierSubscription: Subscription = this.authService.subjectNotifier.subscribe(notified => {
-  //   // originator has notified me. refresh my data here.
-  //   this.showSideBar=true;
-  // });
+  notifierSubscription: Subscription = this.authService.subjectNotifier.subscribe(notified => {
+    // originator has notified me. refresh my data here.
+    // this.showSideBar=true;
+   
+
+  });
   
   constructor(private productService:ProductService,private router:Router,private afauth:AngularFireAuth,private authService:AuthService) {
    
    }
 
   ngOnInit(): void {
+
+   
 
     this.afauth.onAuthStateChanged((user)=>{
       if(user){

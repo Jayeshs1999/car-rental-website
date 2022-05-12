@@ -15,14 +15,16 @@ export class ViewProductComponent implements OnInit {
   data:any
 
   
-  constructor(private activateRoute:ActivatedRoute,private productService:ProductService,private router:Router) { }
+  constructor(private activateRoute:ActivatedRoute,private productService:ProductService,
+
+    private router:Router) { }
 
   ngOnInit(): void {
     this.activateRoute.params.subscribe(data=>{
       this.productId=data['id'];
       console.log("product id :",this.productId)
     })
-  
+     
     this.productService.viewProduct(this.productId).subscribe(viewData=>{
       this.productData=viewData;
       console.log("produjc :",this.productData)
@@ -49,7 +51,6 @@ export class ViewProductComponent implements OnInit {
 
   }
   refresh(){
-    
     this.ngOnInit()
     window.scrollTo(0,0)
   }

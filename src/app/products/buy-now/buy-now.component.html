@@ -71,7 +71,8 @@
         </div>
       </div>
     </div>
-    <button class="btn btn-primary" type="submit" [disabled]="!formsubmition.valid">Submit form</button>
+    <h2 style="color: red; " *ngIf="invalidFormErrorMsg" >Form is not valid... Please make sure all fields are valid</h2>
+    <button class="btn btn-primary" type="submit" >Submit form</button>
   </form>
 
   <br>

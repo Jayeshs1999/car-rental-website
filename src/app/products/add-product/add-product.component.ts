@@ -1,5 +1,10 @@
+import { identifierName } from '@angular/compiler';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { resolve } from 'dns';
+import { OrderDataService } from 'src/app/order-data.service';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -8,8 +13,8 @@ import { ProductService } from '../product.service';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
-
-  constructor(private productService:ProductService) { }
+  public getData:any
+  constructor(private productService:ProductService,private orderService:OrderDataService,private db:AngularFirestore) { }
 
   ngOnInit(): void {
     
@@ -28,9 +33,9 @@ export class AddProductComponent implements OnInit {
       id: form.value.product_id, 
     productName: form.value.product_name,
       categoryId: form.value.product_category,
-      descriptions:form.value.product_discription,
+      descriptions:form.value.product_description,
       price:form.value.product_price,
-      productImg:form.value.file,
+      productImg:"",
       isAvailable:form.value.product_available,
       rating:form.value.product_rating,
       reviews:form.value.product_reviews,
@@ -39,7 +44,10 @@ export class AddProductComponent implements OnInit {
     console.log(newProduct);
     console.log("file nameL", form.value.file)
 
-  
+    this.orderService.addToFirebase(newProduct).then(data=>{
+      console.log("data added to firebase :",data)
+    })    
+
     this.productService.createProduct(newProduct).subscribe(data=>{
       console.log(data)
     })
@@ -48,4 +56,15 @@ export class AddProductComponent implements OnInit {
     form.reset()
   }
 
+  // getFirebaseData(){
+  //   this.orderService.getData().subscribe(res=>{
+  //     this.getData=res
+  //     for(let value of this.getData){
+  //       console.log(value.payload.doc.data().productImg)
+  //     } 
+  //     console.log(res)}
+  //     )
+  // }
 }
+
+

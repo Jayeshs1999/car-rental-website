@@ -1,26 +1,92 @@
 <mat-toolbar color="primary">
     <!-- class="fixed-top" -->
     <mat-toolbar-row>
-        <mat-icon>polymer</mat-icon>&nbsp;&nbsp;
+        <button mat-icon-button (click)="callMethods()" class="example-icon"
+            aria-label="Example icon-button with menu icon">
+            <mat-icon *ngIf="userLogin">menu</mat-icon>
+        </button>
         <h1>Welcome</h1>
+
+        <form class="form-inline">
+            <div class="input-group">
+                <input class="form-control mr-sm-2" style="margin-left: 10px;" type="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+            </div>
+        </form>
+
         <span class="spacer"></span>
         <button mat-button *ngIf="userNotLogin" routerLink="/login">Login</button>
         <button mat-button *ngIf="userNotLogin" routerLink="/register">Register</button>
 
-        <button mat-button routerLink="/products/view-cart" *ngIf="userLogin" style="margin-right: 5px;">
-            <mat-icon>add_shopping_cart</mat-icon>{{lenght}}
-        </button>
-       
-
-
-        <button mat-mini-fab [matMenuTriggerFor]="menu" *ngIf="userLogin"  color="primary" #menuTrigger>
+        <a routerLink="/products/view-cart" style="margin-top: 17px; color: white;">
+            <mat-icon style="margin-right: 45px;" *ngIf="userLogin" matBadge="{{lenght}}" matBadgeColor="accent"
+                [matBadgeHidden]="hidden" (click)="toggleBadgeVisibility()">add_shopping_cart</mat-icon>
+        </a>
+        <button mat-mini-fab [matMenuTriggerFor]="menu" *ngIf="userLogin" color="primary" #menuTrigger>
             <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item >{{firstname}}  {{lastname}}</button>
-            <button mat-menu-item >{{email}}</button>
-            <button mat-button color="warn" *ngIf="userLogin" (click)="logOut()"> LogOut</button>
+            <mat-card>
+                <mat-icon>account_box</mat-icon>
+                <mat-card-content>
+                    <p><span style="font-weight: bold;">Name :</span> {{firstname}} {{lastname}}</p>
+                    <p><span style="font-weight: bold;">Email:</span> {{email}}</p>
+                    <p><span style="font-weight: bold;">{{30 | userInr:30}}</span></p>
+                </mat-card-content>
+            </mat-card>
+            <button mat-button color="warn" *ngIf="userLogin" (click)="openDialog()"> LogOut</button>
         </mat-menu>
-
     </mat-toolbar-row>
 </mat-toolbar>
+
+
+<mat-sidenav-container  >
+    <mat-sidenav mode="over" [(opened)]="isShowing" fixedInViewport >
+
+        <img [src]="url" height="200"> <br />
+        <p style="color: white; font-size: 20px; ">{{firstname}} {{lastname}}</p>
+        <input type='file' (change)="onSelectFile($event)">
+        <mat-list style="margin-top: 20px;">
+
+            <a routerLink="/products/products" style="text-decoration: none;" (click)="linkClicked()">
+                <mat-list-item class="menu-item-color">
+                    <mat-icon class="margin-menu">home</mat-icon>Home
+                </mat-list-item>
+            </a>
+            <mat-divider></mat-divider>
+            <a routerLink="/products/view-cart" style="text-decoration: none;" (click)="linkClicked()">
+                <mat-list-item class="menu-item-color">
+                    <mat-icon class="margin-menu">shopping_cart</mat-icon>Cart
+                </mat-list-item>
+            </a>
+            <mat-divider></mat-divider>
+            <mat-list-item class="menu-item-color">
+                <mat-icon class="margin-menu">call</mat-icon>Helpline
+            </mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item class="menu-item-color">
+                <mat-icon class="margin-menu">brightness_medium</mat-icon>Visibility
+            </mat-list-item>
+
+            <mat-divider></mat-divider>
+            <mat-list-item class="menu-item-color">
+                <mat-icon class="margin-menu">settings</mat-icon>Settings
+            </mat-list-item>
+        </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <app-sidebar></app-sidebar>
+                </div>
+                <div class="col-lg-9">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

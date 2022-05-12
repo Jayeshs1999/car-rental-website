@@ -11,7 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component'
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { RegisterComponent } from './register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from "@angular/fire/compat";
@@ -33,6 +33,12 @@ import { ViewCartComponent } from './view-cart/view-cart.component';
 import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatBadgeModule} from '@angular/material/badge';
+import { DialogForDeleteComponent } from './nav-bar/dialog-for-delete/dialog-for-delete.component';
+// import { DialogForDeleteComponent } from './nav-bar/dialog-for-delete/dialog-for-delete.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { UserInrPipe } from './pipes/user-inr.pipe';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -42,14 +48,20 @@ import {MatMenuModule} from '@angular/material/menu';
     RegisterComponent,
   
     ErrorComponent,
-       ViewCartComponent
+       ViewCartComponent,
+       DialogForDeleteComponent,
+       UserInrPipe,
+      //  DialogForDeleteComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    MatChipsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
+    MatSidenavModule,
     MatButtonModule,
     MatToolbarModule,
     ReactiveFormsModule,
@@ -59,6 +71,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDialogModule,
     MatMenuModule,
     AngularFireModule.initializeApp(environment.firebase),
+    MatBadgeModule,
+    
     
     ProductsRoutingModule,
     OrdersModule,

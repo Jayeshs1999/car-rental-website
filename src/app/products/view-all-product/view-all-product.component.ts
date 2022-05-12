@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OrderDataService } from 'src/app/order-data.service';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 
@@ -10,7 +11,8 @@ import { ProductService } from '../product.service';
 })
 export class ViewAllProductComponent implements OnInit {
   productList:any;
-  constructor(private productService:ProductService,private activateRoute:ActivatedRoute) { }
+  getFirebaseProduct:any;
+  constructor(private productService:ProductService,private activateRoute:ActivatedRoute,private orderService:OrderDataService) { }
 
   ngOnInit(): void {
 
@@ -19,5 +21,6 @@ export class ViewAllProductComponent implements OnInit {
       console.log(this.productList[0]['productName'])
     })
   }
+
 
 }

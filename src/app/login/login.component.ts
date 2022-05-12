@@ -42,12 +42,13 @@ export class LoginComponent implements OnInit {
       return;
     this.authService.loginUser(this.loginForm.value.email, this.loginForm.value.password).then((result: any) => {
       if (result == null) {
+        
         console.log("Logging in...")
         alert("Congratulation !! Login Successfully")
      
         this.isLogIn = true
         this.router.navigate(["/products/products"])
-        this.authService.notifyAboutChange();
+        // this.authService.notifyAboutChange();
 
       }
       else if (result.isValid == false) {
