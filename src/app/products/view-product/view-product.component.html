@@ -32,11 +32,11 @@
 
 <!-- Related items section-->
 <section class="py-5 bg-light" id="rp">
-    <div class="container px-2  mt-5">
+    <div class="container px-4 px-lg-5 mt-5">
         <h2 class="fw-bolder mb-4 px-lg-5"  >Related products</h2>
-        <div class="row content">
+        <div class="row content ">
             <div class="col mb-5" *ngFor="let value of data;">
-                <div class="card h-100" *ngIf="productData.categoryId==value.categoryId; " >
+                <div class="card h-100 " style="width: 150px;" *ngIf="productData.categoryId==value.categoryId; " >
                     
                     <img class="card-img-top" src="{{value.productImg}}" alt="..." />
                   
@@ -58,5 +58,4 @@
         </div>
     </div>
 </section>
-
 

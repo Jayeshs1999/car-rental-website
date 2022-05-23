@@ -1,8 +1,15 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { EventEmitter, Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+
+function _window(): any {
+  // return the global native browser window object
+  return window;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +22,10 @@ export class AuthService {
 
 
   subjectNotifier: Subject<null> = new Subject<null>();
-  constructor(private router: Router, private afAuth: AngularFireAuth) {
+  eventEmitterNotifier: EventEmitter<null> = new EventEmitter();
+
+  
+  constructor(private router: Router, private afAuth: AngularFireAuth,@Inject(PLATFORM_ID) private platformId: object) {
     this.userLoggedIn = false
     this.afAuth.onAuthStateChanged((user) => {
       if (user) {
@@ -27,6 +37,10 @@ export class AuthService {
   }
   notifyAboutChange() {
     this.subjectNotifier.next(null);
+  }
+
+  notifyAboutChangeForToggle() {
+    this.eventEmitterNotifier.emit();
   }
 
   signUpUser(user: any): Promise<any> {
@@ -61,6 +75,13 @@ export class AuthService {
         return { isValid: false, message: error.message }
     })
   }
+
+  get nativeWindow(): any {
+    if(isPlatformBrowser(this.platformId)){
+      
+    }
+    return _window();
+}
 }
 
 

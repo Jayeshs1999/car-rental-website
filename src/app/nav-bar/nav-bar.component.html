@@ -1,5 +1,5 @@
-<mat-toolbar color="primary">
-    <!-- class="fixed-top" -->
+<!-- <mat-toolbar color="primary">
+   
     <mat-toolbar-row>
         <button mat-icon-button (click)="callMethods()" class="example-icon"
             aria-label="Example icon-button with menu icon">
@@ -89,4 +89,37 @@
             </div>
         </div>
     </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
+
+<mat-toolbar color="primary"  >
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="callMethods()" class="example-icon"
+            aria-label="Example icon-button with menu icon">
+            <mat-icon *ngIf="userLogin">menu</mat-icon>
+        </button>
+        <h1>Welcome</h1>
+
+        <span class="spacer"></span>
+        <button mat-button *ngIf="userNotLogin" routerLink="/login">Login</button>
+        <button mat-button *ngIf="userNotLogin" routerLink="/register">Register</button>
+
+        <a routerLink="/products/view-cart" style="margin-top: 17px; color: white;">
+            <mat-icon style="margin-right: 45px;" *ngIf="userLogin" matBadge="{{lenght}}" matBadgeColor="accent"
+                [matBadgeHidden]="hidden" (click)="toggleBadgeVisibility()">add_shopping_cart</mat-icon>
+        </a>
+        <button mat-mini-fab [matMenuTriggerFor]="menu" *ngIf="userLogin" color="primary" #menuTrigger>
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <mat-card>
+                <mat-icon>account_box</mat-icon>
+                <mat-card-content>
+                    <p><span style="font-weight: bold;">Name :</span> {{firstname}} {{lastname}}</p>
+                    <p><span style="font-weight: bold;">Email:</span> {{email}}</p>
+                    <p><span style="font-weight: bold;">{{30 | userInr:30}}</span></p>
+                </mat-card-content>
+            </mat-card>
+            <button mat-button color="warn" *ngIf="userLogin" (click)="openDialog()"> LogOut</button>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>

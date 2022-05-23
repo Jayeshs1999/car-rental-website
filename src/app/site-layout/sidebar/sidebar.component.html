@@ -1,11 +1,17 @@
-<div *ngIf="showSideBar">
-<h1 class="my-4">Welcome Shop</h1>
+<div *ngIf="showSideBar"  >
+    <form class="form-inline" style="padding-top: 20px; padding-bottom: 20px;">
+        <div class="input-group">
+            <input class="form-control mr-sm-2" style="margin-left: 10px;" type="search" placeholder="Search"
+                aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+        </div>
+    </form>
 
-<a routerLink="products/products"  class="list-group-item" style="background-color:khaki;" >View All Products</a>
+    <a routerLink="products/products" class="list-group-item" style="background-color:khaki;">View All Products</a>
 
-<a routerLink="products/add-product" class="list-group-item">Add New Product</a>
+    <a routerLink="products/add-product" class="list-group-item">Add New Product</a>
 
-<div class="list-group"  *ngFor="let d of data; let index = index">
-    <a routerLink="products/category/{{data[index].id}}"  class="list-group-item" >{{data[index]['id']}}  {{data[index]['categoryName']}}</a>
-</div>
+    <div class="list-group" *ngFor="let d of data; let index = index">
+        <a routerLink="products/category/{{data[index].id}}" class="list-group-item">{{data[index]['categoryName']}}</a>
+    </div>
 </div>

@@ -26,6 +26,7 @@ export interface DialogData {
 })
 export class NavBarComponent implements OnInit {
 
+isShowing:boolean
 userNotLogin=true
 userLogin=false
  cartItemLenght:any
@@ -34,15 +35,16 @@ userLogin=false
  firstname:any
  lastname:any
  hidden = false;
- isShowing:boolean
+//  isShowing:boolean
  url=localStorage.getItem("url");
 
  toggleSidenav(){
    this.isShowing=!this.isShowing;
-   console.log(this.isShowing)
+   console.log("boolean :",this.isShowing)
  }
  callMethods(){
    this.toggleSidenav()
+   this.authService.notifyAboutChangeForToggle()
  }
 
 

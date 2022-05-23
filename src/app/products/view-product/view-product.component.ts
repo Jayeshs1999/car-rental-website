@@ -54,6 +54,4 @@ export class ViewProductComponent implements OnInit {
     this.ngOnInit()
     window.scrollTo(0,0)
   }
-
-
 }

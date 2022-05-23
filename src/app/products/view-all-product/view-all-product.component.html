@@ -1,34 +1,30 @@
-
-
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <div class="col mb-5"  *ngFor="let data of productList; let index=index">
+                <a routerLink="view-product/{{productList[index].id}}">
                 <div class="card h-100">
-                    <!-- Product image-->
+                    <!-- Product image -->
                     <img class="card-img-top" src={{productList[index].productImg}} alt="..." />
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
-                            <h4 class="card-title">
-                                <a routerLink="view-product/{{productList[index].id}}" class="fw-bolder">{{productList[index].productName}}</a>
-                            </h4>
+                            <h3>
+                                <a routerLink="view-product/{{productList[index].id}}" class="fw-bolder prodname">{{productList[index].productName}}</a>
+                            </h3>
                             <!-- Product price-->
-                            {{productList[index].price}}
+                           <h4 ><strong style="color: rgb(247, 109, 132);">Price {{productList[index].price}}</strong></h4>
                         </div>
-
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer">
-                        <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div> -->
+                         <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div> -->
                         <small class="text-muted">{{productList[index].rating}} stars</small>
                     </div>
                 </div>
+            </a>
             </div>
         </div>
     </div>
 </section>
-
-
-

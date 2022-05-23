@@ -15,7 +15,7 @@
         <label for="validationCustom02">Last name</label>
         <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" name="lastname" ngModel  value="" required>
         <div class="valid-feedback">
-          Looks good!
+          Looks goooood!
         </div>
       </div>
       <div class="col-md-6 mb-3">
@@ -48,10 +48,29 @@
           Please provide a valid zip.
         </div>
       </div>
-      <div class="col-md-3 mb-3">
-        <label for="validationCustom05">Order type</label>
-        <input type="text" class="form-control" id="validationCustom05" name="ordertype" [(ngModel)]="CashOnDelivery"  value="Cash On Delivery" placeholder="Pin Code" readonly>
+
+      <div class="col-md-3 mb-3" *ngIf="moneyValueShowInDropDown">
+        <label for="validationCustom05">Payment</label>
+        <input type="text" class="form-control" id="validationCustom05" name="ordertype"  value="{{productData.price}}" placeholder="Payment" readonly>
       </div>
+      <div class="col-md-3 mb-3" *ngIf="textValueShowInDropDown">
+      <mat-form-field appearance="outline">
+        <mat-label>Payment Mode</mat-label>
+        <mat-select  required>
+          <mat-option>--</mat-option>
+          <mat-option value="a"  >
+            Cash On Delivery
+          </mat-option>
+          <mat-option value="b"  (click)="payWithRazor(productData.price)">
+            Make Online Payment
+          </mat-option>
+        </mat-select>
+        <mat-error>Please choose an animal</mat-error>
+        <mat-hint>hint</mat-hint>
+      </mat-form-field>
+    </div>
+
+
 
       <div class="col-md-6 mb-3">
         <label for="validationCustom03">Mobile No</label>
@@ -74,6 +93,5 @@
     <h2 style="color: red; " *ngIf="invalidFormErrorMsg" >Form is not valid... Please make sure all fields are valid</h2>
     <button class="btn btn-primary" type="submit" >Submit form</button>
   </form>
-
   <br>
    

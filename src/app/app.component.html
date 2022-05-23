@@ -1,20 +1,58 @@
 
-<!-- <app-nav-bar></app-nav-bar> -->
 
 <app-nav-bar></app-nav-bar>
-<!-- <div class="container">
+<mat-sidenav-container>
+    <mat-sidenav mode="over" [(opened)]="isShowing" fixedInViewport>
 
-    <div class="row">
-        <div class="col-lg-3">
-            <app-sidebar></app-sidebar>
-        </div>
-        <div class="col-lg-9">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-</div> -->
+        <img [src]="url" height="200"> <br />
+        <p style="color: white; font-size: 20px; ">{{firstname}} {{lastname}}</p>
+        <input type='file' (change)="onSelectFile($event)">
+        <mat-list style="margin-top: 20px;">
 
+            <a routerLink="/products/products" style="text-decoration: none;" (click)="linkClicked()">
+                <mat-list-item class="menu-item-color">
+                    <mat-icon class="margin-menu">home</mat-icon>Home
+                </mat-list-item>
+            </a>
+            <mat-divider></mat-divider>
+            <a routerLink="/products/view-cart" style="text-decoration: none;" (click)="linkClicked()">
+                <mat-list-item class="menu-item-color">
+                    <mat-icon class="margin-menu">shopping_cart</mat-icon>Cart
+                </mat-list-item>
+            </a>
+            <mat-divider></mat-divider>
+            <mat-list-item class="menu-item-color">
+                <mat-icon class="margin-menu">call</mat-icon>Helpline
+            </mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item class="menu-item-color">
+                <mat-icon class="margin-menu">brightness_medium</mat-icon>Visibility
+            </mat-list-item>
+
+            <mat-divider></mat-divider>
+            <mat-list-item class="menu-item-color">
+                <mat-icon class="margin-menu">settings</mat-icon>Settings
+            </mat-list-item>
+        </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-lg-3 ">
+                    <app-sidebar></app-sidebar>
+                </div>
+                <div class="col-lg-9 ">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
 <app-footer></app-footer>
 
-
-<!-- <router-outlet></router-outlet> -->
+<!-- <a href="" ><mat-icon ></mat-icon></a> -->
+<button mat-fab  class="upbutton" (click)="refresh()"  >
+    <mat-icon style="color: white;" >arrow_upward</mat-icon>
+</button>
+ 
